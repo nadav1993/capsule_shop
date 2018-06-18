@@ -1,0 +1,58 @@
+    <form name="capsuleForm" class="add-edit-capsule-dialog"> 
+            <div class="title-wrapper">
+                <h1>{{ctrl.title}}</h1>
+                <md-button class="close-dialog md-primary mdraised" ng-click="ctrl.close()">X</md-button>
+            </div>
+        <md-dialog-content class="container">
+            
+                <md-input-container>
+                    <label>Name</label>
+                    <input type="text" name="capsulesName" required ng-model="ctrl.capsule.name">
+                    <div ng-messages="capsuleForm.capsuleName.$error">
+                        <div ng-message="required">The name of the capsule is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Company</label>
+                    <md-select name="capsuleCompany" ng-model="ctrl.capsule.company" required>
+                        <md-option ng-repeat="company in ctrl.companies" ng-value="company.name">
+                            {{company.name}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="capsuleForm.capsuleCompany.$error">
+                        <div ng-message="required">The company of the capsule is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Price</label>
+                    <input type="number" min="1" name="capsulePrice" ng-model="ctrl.capsule.price" required>
+                    <div ng-messages="capsuleForm.capsulePrice.$error">
+                        <div ng-message="required">The price of the capsule required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Strength</label>
+                    <md-select name="strengthLvl" ng-model="ctrl.capsule.strength" required>
+                        <md-option ng-repeat="strength in ctrl.strengths" ng-value="strength.key">
+                            {{strength.value}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="capsuleForm.strengthLvl.$error">
+                        <div ng-message="required">The strength of the capsule is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Description</label>
+                    <textarea ng-model="ctrl.capsule.description"></textarea>
+                </md-input-container>
+                <md-input-container class="image-uploader-wrapper">
+                    <span class="image-uploader-text">Add Picture</span>
+                    <input type="file" class="image-uploader-button" ngf-select ng-model="ctrl.capsuleImage" required name="file" aria-label="add image" accept="image/*" ngf-max-size="5MB" />
+                    <p>{{ctrl.capsuleImage.name}}</p>
+                </md-input-container>
+                <div>
+                    <md-button class="md-primary md-raised" ng-disabled="capsuleForm.$invalid" ng-click="ctrl.save()">Save</md-button>
+                </div>
+            
+        </md-dialog-content>
+    </form>

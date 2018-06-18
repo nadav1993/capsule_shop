@@ -1,0 +1,15 @@
+<div class="">
+	<canvas id="myCanvas" height="100" width="400"></canvas>
+	<h1>For the best morning ever</h1>
+	<h3 class="homeTitle">See our best capsules</h3>
+	<div layout="row">
+		<capsule-item flex ng-repeat="capsule in ctrl.capsules | orderBy:'-price' | limitTo:3"
+				  capsule="capsule" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+		</capsule-item>
+	</div>
+	<h3 ng-show="ctrl.recommend" class="homeTitle">Can we suggest something for you?</h3>
+	<div layout="row" ng-show="ctrl.recommend">
+		<capsule-item ng-if="ctrl.recommend" flex capsule="ctrl.recommend" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+		</capsule-item>
+	</div>
+</div>

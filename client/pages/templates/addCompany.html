@@ -1,0 +1,19 @@
+<form name="ctrl.companyForm" class="add-edit-capsule-dialog"> 
+    <div class="title-wrapper">
+        <h1>{{ctrl.title}}</h1>
+        <md-button class="close-dialog md-primary md-raised" ng-click="ctrl.close()">X</md-button>
+    </div>
+    <md-dialog-content class="container">
+        <md-input-container>
+            <label>Name</label>
+            <input type="text" name="companyName" required ng-change="ctrl.refreshValidation()" ng-model="ctrl.company.name">
+            <div ng-messages="ctrl.companyForm.companyName.$error">
+                <div ng-message="required">The name of the company required.</div>
+                <div ng-show="ctrl.isAlreadyExists">This company already exists</div>
+            </div>
+        </md-input-container>
+        <div>
+            <md-button class="md-primary md-raised" ng-disabled="companyForm.$invalid" ng-click="ctrl.save()">Save</md-button>
+        </div>
+    </md-dialog-content>
+</form>

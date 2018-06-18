@@ -1,0 +1,54 @@
+<div class="capsules-filter">
+    Tweet Your Thoughts:
+    <input class="form-control" type="text" ng-model="ctrl.tweet"/>
+    <md-input-container>
+        <input ng-disabled="ctrl.tweet === ''" type="button" value="TWEET!" name="submit" ng-click="ctrl.postTweet()">
+    </md-input-container>
+</div>
+<section layout="row">
+    <aside flex="15" class="checkbox-filters">
+        <div>
+            <h3>Search by name:</h3>
+            <input class="form-control" type="text" ng-model="ctrl.searchText"/>
+        </div>
+        <div class="aside-filter-header">
+            <h3 class="">Filter By Company:</h3>
+        </div>        
+        <div class="checkbox" ng-repeat="company in ctrl.companies">
+            <label>
+                <input type="checkbox" ng-model="ctrl.companyFilter[company.name]" />
+                {{company.name}}
+            </label>
+        </div>        
+        <div class="aside-filter-header">
+            <h3 class="">Filter By Strength:</h3>
+        </div>
+        <div class="checkbox" ng-repeat="strength in ctrl.strengths">
+            <label>
+                <input type="checkbox" ng-model="ctrl.strengthFilter[strength.key]" />
+                {{strength.value}}
+            </label>
+        </div>
+    </aside>
+    <div flex class="">        
+        <div class="items" layout="row" layout-wrap>
+            <div class="capsule-item-wrapper" ng-class="{removed: ctrl.removed === capsule._id}" flex="33" ng-repeat="capsule in (ctrl.filteredCapsules = (ctrl.capsules | filter:{name:ctrl.searchText} | filter:ctrl.filterByCompany | filter:ctrl.filterByStrength | orderBy:ctrl.orderbyfilter))">
+                <capsule-item capsule="capsule" add-to-cart="false" show-price="ctrl.showPrice">
+                </capsule-item>
+                <div layout="row" layout-align="center center">
+                    <md-button class="remove-capsule-btn manage-capsule-actions-btn md-fab md-mini md-ink-ripple" aria-label="remove capsule" ng-click="ctrl.delete(capsule._id)">
+                        <md-icon md-svg-src="public/Images/delete.svg"></md-icon>
+                    </md-button>
+                    <md-button class="manage-capsule-actions-btn edit-capsule-btn md-fab md-mini md-ink-ripple" aria-label="edit capsule" ng-click="ctrl.openDialog($event, capsule)">
+                        <md-icon md-svg-src="public/Images/edit.svg"></md-icon>
+                    </md-button>
+                </div>                
+            </div>  
+            <h4 class="searchResultErr" ng-if="!ctrl.filteredCapsules.length">No Capsules Found</h4>
+        </div>
+    </div>
+</section>
+
+<md-button class="md-fab add-capsule-btn" aria-label="Add " ng-click="ctrl.openDialog($event)">
+    +
+</md-button>

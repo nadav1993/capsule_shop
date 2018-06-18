@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="capsuleShop">
+    <head>
+        <meta charset="utf-8" />
+        <title>Good Morning</title>
+		<link rel="shortcut icon" href="public/Images/Favicon.jpg"/> 
+        <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css"/>
+        <link rel="stylesheet" type="text/css" href="node_modules/nvd3/build/nv.d3.min.css"/>
+		<link rel="stylesheet" type="text/css" href="public/style.css"/> 
+	</head>
+    <body>
+        <header class="header" layout="row">
+            <div class="cart-btn">
+               <cart-icon></cart-icon>             
+            </div>
+            <div flex="15" class="">
+                <a ui-sref="home"><img class="" src="public/Images/Icon.png" width="200"/></a>
+            </div>
+			<nav flex="60" layout="row" layout-align="start center" class="capsules-store-nav-bar">
+				<li><a ui-sref="home" ui-sref-active="active"> Home </a></li>
+                <li><a ui-sref="capsules" ui-sref-active="active"> All Capsules </a></li>
+                <li><a ui-sref="stores" ui-sref-active="active"> Stores </a></li>
+				<li><a ui-sref="about" ui-sref-active="active"> About Us </a></li>
+                <md-menu md-offset="0 40">
+                    <a ng-mouseenter="$mdMenu.open()">Manager</a>
+                    <md-menu-content ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>                            
+                            <md-button ui-sref="manager-capsules"> Manage Capsules </md-button>                            
+                        </md-menu-item>                  
+                        <md-menu-item>
+                            <md-button ui-sref="manager-companies"> Manage Capsule Companies </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="manager-statistics"> Statistics </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </nav>
+        </header>
+        <section class="mainView" ui-view="">
+        </section>
+        <footer class="footer">
+        <p>&copy; Nadav Aviv and Tzach Hadar</p>
+        </footer>
+        
+        <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-aria/angular-aria.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-messages/angular-messages.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-material/angular-material.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+        <script type="text/javascript" src="node_modules/d3/d3.js"></script>
+        <script type="text/javascript" src="node_modules/nvd3/build/nv.d3.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
+
+        <!-- Angular App -->
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="config/routes.config.js"></script>
+        <script type="text/javascript" src="manager.module.js"></script>
+        <script type="text/javascript" src="cart.module.js"></script>
+        
+        <!-- Services -->
+        <script type="text/javascript" src="services/capsules.service.js"></script>
+        <script type="text/javascript" src="services/cart.service.js"></script>
+        <script type="text/javascript" src="services/socket.service.js"></script>
+        <script type="text/javascript" src="services/store.service.js"></script>
+        <script type="text/javascript" src="services/view.service.js"></script>
+        
+        <!-- Directives -->
+        <script type="text/javascript" src="directives/capsuleItem.js"></script>
+        <script type="text/javascript" src="directives/addToCart.js"></script>
+        <script type="text/javascript" src="directives/cartIcon.js"></script>
+        <script type="text/javascript" src="directives/store.js"></script>
+        
+        <!-- Components -->
+        <script type="text/javascript" src="components/all.capsules/all.capsules.component.js"></script>
+        <script type="text/javascript" src="components/stores/stores.component.js"></script>
+        <script type="text/javascript" src="components/capsule/capsule.component.js"></script>
+        <script type="text/javascript" src="components/home/home.component.js"></script>
+        <script type="text/javascript" src="components/cart/cart.component.js"></script>
+        <script type="text/javascript" src="components/manage.capsules/manage.capsules.component.js"></script>
+        <script type="text/javascript" src="components/manage.capsule.companies/manage.capsule.companies.component.js"></script>
+        <script type="text/javascript" src="components/manager.statistics/manager.statistics.component.js"></script>
+
+        <!-- APIs -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWBqFys-8rdAyBvJ5yZI2KFZfcbVzJU8Q"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<section layout="row">
+    <aside flex="15" class="checkbox-filters">
+        <div>
+            <h3>Search by Name:</h3>
+            <input class="form-control" type="text" ng-model="ctrl.searchText"/>
+        </div>
+        <div class="aside-filter-header">
+            <h3 class="">Filter By Company:</h3>
+        </div>        
+        <div class="checkbox" ng-repeat="company in ctrl.companies">
+            <label>
+                <input type="checkbox" ng-model="ctrl.companyFilter[company.name]" />
+                {{company.name}}
+            </label>
+        </div>        
+        <div class="aside-filter-header">
+            <h3 class="">Filter By Strength:</h3>
+        </div>
+        <div class="checkbox" ng-repeat="strength in ctrl.strengths">
+            <label>
+                <input type="checkbox" ng-model="ctrl.strengthFilter[strength.key]" />
+                {{strength.value}}
+            </label>
+        </div>
+        <div>
+            <md-input-container>
+                <input type="button" value="SEARCH" name="submit" ng-click="ctrl.search()">
+            </md-input-container>
+        </div>
+    </aside>
+    <div flex class="">        
+        <div class="items" layout="row" layout-wrap>
+            <capsule-item flex="33" ng-repeat="capsule in ctrl.capsules" capsule="capsule" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+            </capsule-item>
+            <h4 class="searchResultErr" ng-if="!ctrl.capsules.length">No Capsules Found</h4>
+        </div>
+    </div>
+</section>

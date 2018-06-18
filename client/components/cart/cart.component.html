@@ -1,0 +1,20 @@
+<div class="" layout-align="start center">
+	<h3 class="cartTitle" ng-if="ctrl.cartItems.length">SHOPPING CART</h3>
+	<section layout="row" layout-align="center" layout-wrap>
+		<capsule-item ng-repeat="capsule in ctrl.cartItems" capsule="capsule.item" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+			<div class="amtWrap">
+				<lable>Amount:</lable>
+				<input class="qty" type="number" min="1" max="100" ng-change="ctrl.updateAmt(capsule)" ng-model="capsule.qty"/>
+			</div>
+			<h5> Total: {{capsule.item.price * capsule.qty | currency}}</h5>
+			<md-button class="md-primary" ng-click="ctrl.removeItem(capsule)">Remove</md-button>
+		</capsule-item>
+	</section>
+	<h3 class="cart-total" ng-if="ctrl.cartItems.length"> TOTAL:
+		<span> {{ ctrl.totalUSDPrice | currency}}
+			<span ng-if="ctrl.totalNISPrice">({{ctrl.totalNISPrice}}₪)</span>
+		</span>
+		</h3>
+	<md-button class="Checkout md-primary md-raised" ng-click="ctrl.checkout($event)" ng-if="ctrl.cartItems.length">Checkout Now</md-button>
+	<h3 ng-if="!ctrl.cartItems.length">Your Shopping Cart is Empty.</h3>
+</div>

@@ -1,0 +1,11 @@
+<div class="capsuleItem">
+	<div class="item">
+		<a ng-href="#!/capsule/{{capsule._id}}">
+			<img class="capsuleImg" ng-src="{{imageUrl}}"/> 
+			<h3> {{capsule.name}} </h3>
+			<h5 ng-show="{{showPrice}}"> {{capsule.price | currency}}</h5>
+		</a>
+		<ng-transclude></ng-transclude>
+		<add-to-cart add-to-cart="addToCart" capsule="capsule"></add-to-cart>
+	</div>
+</div>

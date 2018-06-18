@@ -1,0 +1,9 @@
+<div class="narrow col-md-6">
+	<img class="capsuleImg" ng-src="{{ctrl.imageUrl}}"/>
+	<h1> {{ctrl.capsule.name}} </h1>
+	<p> Company: {{ctrl.capsule.company}} </p>
+	<p> Strength: {{ctrl.capsule.strength}} </p>
+	<p> {{ctrl.capsule.description }} </p>
+	<h4> {{ctrl.capsule.price | currency}} | 30g</h4>
+	<add-to-cart add-to-cart="addToCart" capsule="capsule"></add-to-cart>
+</div>
