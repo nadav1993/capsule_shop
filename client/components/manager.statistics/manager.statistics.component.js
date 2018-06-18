@@ -46,7 +46,7 @@
                     bottom: 50,
                     left: 55
                 },
-                x: function(d){return d.value;},
+                x: function(d){return d.key;},
                 y: function(d){
                     return d.value.length;
                 },

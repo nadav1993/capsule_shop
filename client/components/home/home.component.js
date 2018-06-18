@@ -51,7 +51,7 @@
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
             ctx.font = "35px Arial";
-            ctx.strokeText("Welcome", 10, 50);   
+            ctx.strokeText("Our Roasts", 10, 50);   
         }
     }
 })();
